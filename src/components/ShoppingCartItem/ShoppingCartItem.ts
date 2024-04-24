@@ -1,6 +1,6 @@
 import styles from './ShoppingCartItem.css';
 
-export enum Attribute {
+export enum AttributeCart {
 	'image' = 'image',
 	'titlee' = 'titlee',
 	'price' = 'price',
@@ -12,7 +12,7 @@ export default class CartItem extends HTMLElement {
 	price?: string;
 
 	static get observedAttributes() {
-		const attrs: Record<Attribute, null> = {
+		const attrs: Record<AttributeCart, null> = {
 			image: null,
 			titlee: null,
 			price: null,
@@ -20,7 +20,7 @@ export default class CartItem extends HTMLElement {
 		return Object.keys(attrs);
 	}
 
-	attributeChangedCallback(propName: Attribute, _: unknown, newValue: string) {
+	attributeChangedCallback(propName: AttributeCart, _: unknown, newValue: string) {
 		switch (propName) {
 			default:
 				this[propName] = newValue;

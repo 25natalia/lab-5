@@ -66,5 +66,6 @@ export default class Product extends HTMLElement {
 		cssProduct.innerHTML = styles;
 		this.shadowRoot?.appendChild(cssProduct);
 	}
-	}
+}
 
+customElements.define('app-product', Product);
