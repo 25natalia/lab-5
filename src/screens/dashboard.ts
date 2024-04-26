@@ -11,7 +11,7 @@ class Dashboard extends HTMLElement {
 	}
 
 	async connectedCallback() {
-		const data = await getProduct;
+		const data = await getProduct();
 		console.log(data);
 
 		this.render(data);
@@ -23,7 +23,7 @@ class Dashboard extends HTMLElement {
 			const card = this.ownerDocument.createElement('app-card');
 			card.setAttribute(Attribute.titlee, e.titlee);
 			card.setAttribute(Attribute.price, e.price);
-		});
+		this.shadowRoot?.appendChild(card)});
 	}
 }
 

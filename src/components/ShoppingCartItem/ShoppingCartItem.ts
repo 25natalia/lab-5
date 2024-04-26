@@ -52,3 +52,5 @@ export default class CartItem extends HTMLElement {
 		this.shadowRoot?.appendChild(cssCartItem);
 	}
 }
+
+customElements.define('app-cart', CartItem)

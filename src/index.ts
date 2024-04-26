@@ -12,8 +12,12 @@ class AppContainer extends HTMLElement {
 	}
 
 	render() {
-		const something = this.ownerDocument.createElement('app-dasboard');
-		this.shadowRoot?.appendChild(something);
+		if (this.shadowRoot) {
+			this.shadowRoot.innerHTML = ``;
+
+			const something = this.ownerDocument.createElement('app-dashboard');
+			this.shadowRoot?.appendChild(something);
+		}
 	}
 }
 
