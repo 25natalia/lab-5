@@ -1,4 +1,6 @@
 import styles from './product.css';
+import { dispatch } from '../../store/index';
+import { SaveShoppingCartItem } from '../../store/actions';
 
 export enum Attribute {
 	'button' = 'button',
@@ -47,10 +49,6 @@ export default class Product extends HTMLElement {
 
 	connectedCallback() {
 		this.render();
-		const button = this.shadowRoot?.querySelector('button');
-		button?.addEventListener('click', () => {
-			console.log('added');
-		});
 	}
 
 	render() {
@@ -64,8 +62,14 @@ export default class Product extends HTMLElement {
   <h3>Category: ${this.category}</h3>
   <h2>$${this.price}</h2>
   <img src='${this.rating}'></img>
-	<button>Add</button>
+	<button class="add">Add</button>
   </section>`;
+			const AddButton = this.shadowRoot.querySelector('.add');
+			if (AddButton) {
+				AddButton.addEventListener('click', () => {
+					dispatch(SaveShoppingCartItem({ titlee: this.titlee, image: this.image, price: this.price }));
+				});
+			}
 		}
 		const cssProduct = this.ownerDocument.createElement('style');
 		cssProduct.innerHTML = styles;

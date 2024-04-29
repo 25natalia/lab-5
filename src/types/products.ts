@@ -4,5 +4,7 @@ export interface ApiType {
 	description: string;
 	category: string;
 	price: string;
-  rating:string;
+	rating: {
+		rate: string;
+	};
 }
