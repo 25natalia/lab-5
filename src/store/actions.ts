@@ -6,6 +6,7 @@ import { Observer, AppState, Actions } from '../types/store';
 // payload dataproducts que es lo que le voy a dar para que se rellene
 export const GetProduct = async (): Promise<GetProductsAction> => {
 	const dataProduct = await getProduct();
+	console.log(dataProduct);
 	return {
 		action: ProductsActions.get,
 		payload: dataProduct,

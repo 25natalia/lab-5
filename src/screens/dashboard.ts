@@ -2,8 +2,9 @@ import getProduct from '../services/getProducts';
 import Product, { Attribute } from '../components/product/product';
 import '../components/index';
 import { ApiType } from '../types/products';
-import { AttributeCart } from '../components/ShoppingCartItem/ShoppingCartItem';
+import CartItem, { AttributeCart } from '../components/ShoppingCartItem/ShoppingCartItem';
 import { addObserver, appState, dispatch } from '../store/index';
+import { GetProduct } from '../store/actions';
 
 export class Dashboard extends HTMLElement {
 	constructor() {
@@ -31,6 +32,19 @@ export class Dashboard extends HTMLElement {
 			this.shadowRoot?.appendChild(card);
 		});
 
+		const title = this.ownerDocument.createElement(`h1`);
+		title.innerText = `Favoritos`;
+		this.shadowRoot?.appendChild(title);
+
+		if (appState.favorites) {
+			appState.favorites.forEach((item: any) => {
+				const newItem = this.ownerDocument.createElement('app-cart') as CartItem;
+				newItem.setAttribute(AttributeCart.titlee, item.titlee);
+				newItem.setAttribute(AttributeCart.image, item.image);
+				newItem.setAttribute(AttributeCart.price, item.price);
+				this.shadowRoot?.appendChild(newItem);
+			});
+		}
 	}
 }
 
