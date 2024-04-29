@@ -1,5 +1,7 @@
 import './components/index';
 import './screens/dashboard';
+import styles from './components/product/product.css'
+import  getProduct  from './services/getProducts';
 
 class AppContainer extends HTMLElement {
 	constructor() {
@@ -7,7 +9,9 @@ class AppContainer extends HTMLElement {
 		this.attachShadow({ mode: 'open' });
 	}
 
-	connectedCallback() {
+	async connectedCallback() {
+		const data = await getProduct()
+		console.log
 		this.render();
 	}
 
