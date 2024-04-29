@@ -47,6 +47,10 @@ export default class Product extends HTMLElement {
 
 	connectedCallback() {
 		this.render();
+		const button = this.shadowRoot?.querySelector('button');
+		button?.addEventListener('click', () => {
+			console.log('added');
+		});
 	}
 
 	render() {
@@ -56,10 +60,11 @@ export default class Product extends HTMLElement {
   <section>
   <h1>${this.titlee}</h1>
   <img src='${this.image}'></img>
-  <h3>Status: ${this.description}</h3>
-  <h3>Species: ${this.category}</h3>
-  <h2>Type:${this.price}</h2>
+  <h3> ${this.description}</h3>
+  <h3>Category: ${this.category}</h3>
+  <h2>$${this.price}</h2>
   <img src='${this.rating}'></img>
+	<button>Add</button>
   </section>`;
 		}
 		const cssProduct = this.ownerDocument.createElement('style');

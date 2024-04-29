@@ -1,5 +1,8 @@
 export interface ApiType {
-  titlee:string;
-  description:string;
-  price:string;
+	title: string;
+	image: string;
+	description: string;
+	category: string;
+	price: string;
+  rating:string;
 }

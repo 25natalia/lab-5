@@ -20,10 +20,15 @@ class Dashboard extends HTMLElement {
 	render(data: any) {
 		if (this.shadowRoot) this.shadowRoot.innerHTML = '';
 		data.forEach((e: ApiType) => {
-			const card = this.ownerDocument.createElement('app-card');
-			card.setAttribute(Attribute.titlee, e.titlee);
+			const card = this.ownerDocument.createElement('app-product');
+			card.setAttribute(Attribute.titlee, e.title);
+			card.setAttribute(Attribute.image, e.image);
 			card.setAttribute(Attribute.price, e.price);
-		this.shadowRoot?.appendChild(card)});
+			card.setAttribute(Attribute.category, e.category);
+			card.setAttribute(Attribute.description, e.description);
+			card.setAttribute(Attribute.rating, e.rating);
+			this.shadowRoot?.appendChild(card);
+		});
 	}
 }
 
