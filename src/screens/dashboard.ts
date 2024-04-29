@@ -10,6 +10,7 @@ class Dashboard extends HTMLElement {
 		this.attachShadow({ mode: 'open' });
 	}
 
+	// como es await es async
 	async connectedCallback() {
 		const data = await getProduct();
 		console.log(data);
